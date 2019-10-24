@@ -3,6 +3,8 @@
 
 # own code
 source/
+contests/*
+contests/
 
 # clion builds
 cmake-build-*
