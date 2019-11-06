@@ -7,6 +7,7 @@
 #define all(a)      (a).begin(),(a).end()
 #define endl        '\n'
 #define INF         0x3f3f3f3f
+#define M           
 
 using namespace std;
 using ll = int64_t;
