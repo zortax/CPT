@@ -2,6 +2,7 @@
 # Created by https://www.gitignore.io/api/c++,macos,cmake,clion,windows,visualstudio
 
 # own code
+kactl.pdf
 source/
 contests/*
 contests/
