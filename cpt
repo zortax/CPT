@@ -7,18 +7,21 @@ if  [ $# -ne 2 ] || [ $2 -lt 1 ] || [ $2 -gt 26 ] ; then
 fi
 
 d="${0%/*}"
-mkdir -p $d/contests
-mkdir -p $d/contests/$1
+mkdir -p $d/../contests
+cont=$d/../contests/$1
+mkdir -p $cont
 
+mysides remove contest
+mysides add contest file://$cont
 cnt=$2
 for i in {a..z} ; do
-    cp $d/template.cpp $d/contests/$1/$i.cpp
-    echo "add_executable($i $i.cpp)" >> $d/contests/$1/CMakeLists.txt
+    cp $d/template.cpp $cont/$i.cpp
+    echo "add_executable($i $i.cpp)" >> $cont/CMakeLists.txt
     (( --cnt )) || break
 done
-echo 'set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")' >> $d/contests/$1/CMakeLists.txt
+echo 'set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")' >> $cont/CMakeLists.txt
 
 read -p "Open in Clion? [y/n] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]] ; then
-    clion $d/contests/$1
+    clion $cont
 fi
