@@ -5,6 +5,7 @@
 #define all(a)          (a).begin(),(a).end()
 #define endl            '\n'
 #define M               1000000007
+#define tests           int ___;cin>>___;while(___--)
 
 using namespace std;
 using ll = int64_t;
