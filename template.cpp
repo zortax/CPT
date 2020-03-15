@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 
-#define rep(i, a, b)    for(int i = a; i < (b); ++i)
+#define GET_MACRO(_1,_2,_3,NAME,...) NAME
+#define rep(...)        GET_MACRO(__VA_ARGS__, repn, rep0)(__VA_ARGS__)
+#define rep0(i, b)      for(int i = 0; i < (b); ++i)
+#define repn(i, a, b)   for(int i = a; i < (b); ++i)
 #define trav(a, b)      for(auto& a : (b))
 #define all(a)          (a).begin(),(a).end()
 #define endl            '\n'
