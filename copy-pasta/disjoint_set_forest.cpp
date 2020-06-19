@@ -3,28 +3,29 @@
 
 using namespace std;
 
+#define st typename vector<T>::size_type
 template <typename T> struct dsf {
     vector<T> parent;
     
-    dsf(int n) : parent(n) {
+    dsf(st n) : parent(n) {
         iota(all(parent), 0);
     }
     
-    int size() {
+    st size() {
         return parent.size();
     }
 
-    int operator[](int index) {
+    int operator[](st index) {
         return find(index);
     }
 
-    int find(int v) {
+    int find(st v) {
         if (parent[v] == v)
             return v;
         return parent[v] = find(parent[v]);
     }
 
-    void join(int u, int v) {
+    void join(st u, st v) {
         parent[find(u)] = find(v);
     }
 };

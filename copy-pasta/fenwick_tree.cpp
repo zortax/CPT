@@ -3,27 +3,28 @@
 
 using namespace std;
 
+#define st typename vector<T>::size_type
 template <typename T> struct bit {
     vector<T> data;
 
-    bit(int size) : data(size) {}
+    bit(st size) : data(size) {}
 
-    T operator[](int index) {
+    T operator[](st index) {
         return query(index);
     }
 
-    int size() {
+    st size() {
         return data.size();
     }
 
-    T query(int r) {
+    T query(st r) {
         T res = 0;
         for (; r > 0; r &= r - 1)
             res += data[r - 1];
         return res;
     }
 
-    void update(int i, T v) {
+    void update(st i, T v) {
         for(; i < size(); i |= i + 1)
             data[i] += v;
     }
