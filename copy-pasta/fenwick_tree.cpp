@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include "shortcuts.hpp"
+
 using namespace std;
 
 template <typename T> struct bit {
@@ -40,11 +42,11 @@ int main() {
     
     bit<int> fenwick_tree(4);
 
-    for (int i = 0; i < 3; i++) {
+    rep(i, 3) {
         fenwick_tree.update(i, val[i]);
     }
 
-    for (int i = 0; i < 4; i++) {
+    rep(i, 4) {
         cout << fenwick_tree[i] << endl;
     }
 
