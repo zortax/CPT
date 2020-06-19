@@ -4,34 +4,28 @@
 using namespace std;
 
 template <typename T> struct bit {
-    vector<T> *data;
+    vector<T> data;
 
-    bit(int size) {
-        this->data = new vector<T>(size);
-    }
-
-    ~bit() {
-        delete this->data;
-    }
+    bit(int size) : data(size) {}
 
     T operator[](int index) {
         return this->query(index);
     }
 
     int size() {
-        return this->data->size();
+        return this->data.size();
     }
 
     T query(int r) {
         T res = 0;
         for (; r > 0; r &= r - 1)
-            res += (*(this->data))[r - 1];
+            res += this->data[r - 1];
         return res;
     }
 
     void update(int i, T v) {
         for(; i < this->size(); i |= i + 1)
-            (*(this->data))[i] += v;
+            this->data[i] += v;
     }
 
 };
