@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct __bit {
-    vector<int> *data;
+template <typename T> struct bit {
+    vector<T> *data;
 
-    __bit(int size) {
-        this->data = new vector<int>(size);
+    bit(int size) {
+        this->data = new vector<T>(size);
     }
 
-    ~__bit() {
+    ~bit() {
         delete this->data;
     }
 
-    int operator[](int index) {
+    T operator[](int index) {
         return this->query(index);
     }
 
@@ -20,27 +20,25 @@ struct __bit {
         return this->data->size();
     }
 
-    int query(int r) {
-        int res = 0;
+    T query(int r) {
+        T res = 0;
         for (; r > 0; r &= r - 1)
             res += (*(this->data))[r - 1];
         return res;
     }
 
-    void update(int i, int v) {
+    void update(int i, T v) {
         for(; i < this->size(); i |= i + 1)
             (*(this->data))[i] += v;
     }
 
 };
 
-typedef __bit bit;
-
 int main() {
     
     int val[] = { 1, 3, 7 };
     
-    bit fenwick_tree(4);
+    bit<int> fenwick_tree(4);
 
     for (int i = 0; i < 3; i++) {
         fenwick_tree.update(i, val[i]);
