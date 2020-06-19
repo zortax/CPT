@@ -9,23 +9,23 @@ template <typename T> struct bit {
     bit(int size) : data(size) {}
 
     T operator[](int index) {
-        return this->query(index);
+        return query(index);
     }
 
     int size() {
-        return this->data.size();
+        return data.size();
     }
 
     T query(int r) {
         T res = 0;
         for (; r > 0; r &= r - 1)
-            res += this->data[r - 1];
+            res += data[r - 1];
         return res;
     }
 
     void update(int i, T v) {
-        for(; i < this->size(); i |= i + 1)
-            this->data[i] += v;
+        for(; i < size(); i |= i + 1)
+            data[i] += v;
     }
 
 };
